@@ -19,7 +19,7 @@ body.onload = function() {
 
     // begin timer when Begin button is clicked
     function countdown() {
-        var timeLeft = 300;
+        var timeLeft = 3;
         
         var timeInterval = setInterval(function() {
             if (timeLeft > 0) {
@@ -28,7 +28,7 @@ body.onload = function() {
             } else {
             timerEl.textContent = "Time's up!";
             clearInterval(timeInterval);
-            displayMessage();
+            //displayMessage(); Change this to results
             }
         }, 1000);
     };
@@ -43,20 +43,83 @@ body.onload = function() {
     
     clickMe.addEventListener('click', deleteItem);
 
-        document.querySelector('#body').appendChild(welcomeCard);
-        document.querySelector(".card").appendChild(welcomeCardHead);
-        document.querySelector(".card").appendChild(welcomeCardText);
-        document.querySelector(".card").appendChild(clickMe);
-}
+    //Load Question Cards when Begin Button is clicked
+    /*function qCards() {
+        document.querySelector("#body-div").appendChild(qCardOne);
+    };  */  
+    clickMe.addEventListener('click', createCards);
+
+    document.querySelector('#body-div').appendChild(welcomeCard);
+    document.querySelector(".card").appendChild(welcomeCardHead);
+    document.querySelector(".card").appendChild(welcomeCardText);
+    document.querySelector(".card").appendChild(clickMe);
+};
 
 //This is the timer
 var timerEl = document.querySelector('#timer');
-// var clickMe = document.querySelector('#clickMe');
+
+//the for-loop to go through the cards
+/*var qCards = function() {
+    for(var i = 0; i < questions.length; i++) {
+        document.querySelector('#body').appendChild(questions[i]);
+    }
+};*/
+function createCards() {
+
+    var qCardOne = document.createElement('card');
+        qCardOne.textContent = "This is the first question. What's the answer?";
+        qCardOne.className = "qCard qOne";
+
+        //buttons
+        //wrong
+    var CardOneA = document.createElement('button');
+        CardOneA.textContent = "This one is wrong";
+        CardOneA.className = "wrong btn";
+        //wrong
+    var CardOneB = document.createElement('button');
+        CardOneB.textContent = "This one wrong";
+        CardOneB.className = "wrong btn";
+        //right
+    var CardOneC = document.createElement('button');
+        CardOneC.textContent = "This one is right";
+        CardOneC.className = "right btn";
+        //wrong
+    var CardOneD = document.createElement('button');
+        CardOneD.textContent = "This one is wrong";
+        CardOneD.className = "wrong btn";
+
+    document.querySelector('#body-div').appendChild(qCardOne);
+    document.querySelector(".qOne").appendChild(CardOneA);
+    document.querySelector(".qOne").appendChild(CardOneB);
+    document.querySelector(".qOne").appendChild(CardOneC);
+    document.querySelector(".qOne").appendChild(CardOneD);
+
+    document.querySelector(".wrong").addEventListener('click', displayWrong);
+
+    // when the wrong answer is selected
+
+    function displayWrong() {
+        var wrong = document.createElement('p');
+        wrong.textContent = "Wrong!";
+        wrong.className = "wrongText";
+
+        document.querySelector("#boolean").appendChild(wrong);
+    }
+
+}    
 
 
 
  
 
-/* Once the welcome card goes away, I need a for loop with an
+/* Once the welcome card goes away, I need a for-loop with an
 if statement saying that if the body is empty, then access 
-the array of questions */
+the array of questions 
+
+If what? If the body card is empty, then load the cards in 
+this array. So I need an array.
+
+What do I need this to do? 
+1) I need a new card to be loaded (appendChild).
+2) I need 
+*/
