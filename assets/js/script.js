@@ -1,4 +1,6 @@
 
+var timeLeft = 60;
+
 body.onload = function() {
     // load initial welcome card
     var welcomeCard = document.createElement("card");
@@ -19,7 +21,7 @@ body.onload = function() {
 
     // begin timer when Begin button is clicked
     function countdown() {
-        var timeLeft = 3;
+        //var timeLeft = 60;
         
         var timeInterval = setInterval(function() {
             if (timeLeft > 0) {
@@ -68,7 +70,7 @@ function createCards() {
 
     var qCardOne = document.createElement('card');
         qCardOne.textContent = "This is the first question. What's the answer?";
-        qCardOne.className = "qCard qOne";
+        qCardOne.className = "card qCard qOne";
 
         //buttons
         //wrong
@@ -77,7 +79,7 @@ function createCards() {
         CardOneA.className = "wrong btn";
         //wrong
     var CardOneB = document.createElement('button');
-        CardOneB.textContent = "This one wrong";
+        CardOneB.textContent = "This one is wrong";
         CardOneB.className = "wrong btn";
         //right
     var CardOneC = document.createElement('button');
@@ -94,19 +96,35 @@ function createCards() {
     document.querySelector(".qOne").appendChild(CardOneC);
     document.querySelector(".qOne").appendChild(CardOneD);
 
-    document.querySelector(".wrong").addEventListener('click', displayWrong);
 
-    // when the wrong answer is selected
+    document.querySelector(".wrong").addEventListener('click', wrongAnswer);
+    document.querySelector(".wrong").addEventListener('click', subTime);
 
-    function displayWrong() {
+    document.querySelector(".right").addEventListener('click', rightAnswer);
+
+        // when the wrong answer is selected
+
+    function wrongAnswer() {
         var wrong = document.createElement('p');
         wrong.textContent = "Wrong!";
-        wrong.className = "wrongText";
+        wrong.className = "response";
 
         document.querySelector("#boolean").appendChild(wrong);
+    };
+
+    function rightAnswer() {
+        var correct = document.createElement('p');
+        correct.textContent = "Correct!";
+        correct.className = "response";
+
+        document.querySelector('#boolean').appendChild(correct);
     }
 
-}    
+    function subTime() {
+        timeLeft -= 5;
+    };
+}
+  
 
 
 
