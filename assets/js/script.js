@@ -69,8 +69,10 @@ var timerEl = document.querySelector('#timer');
 function createCards() {
 
     var qCardOne = document.createElement('card');
-        qCardOne.textContent = "This is the first question. What's the answer?";
-        qCardOne.className = "card qCard qOne";
+        qCardOne.className = "card";
+    var CardOneText = document.createElement('h2');
+        CardOneText.textContent = "This is the first question. What's the answer?";
+        CardOneText.className = "qCard qOne";
 
         //buttons
         //wrong
@@ -79,7 +81,7 @@ function createCards() {
         CardOneA.className = "wrong btn";
         //wrong
     var CardOneB = document.createElement('button');
-        CardOneB.textContent = "This one is wrong";
+        CardOneB.textContent = "So is this one";
         CardOneB.className = "wrong btn";
         //right
     var CardOneC = document.createElement('button');
@@ -87,14 +89,15 @@ function createCards() {
         CardOneC.className = "right btn";
         //wrong
     var CardOneD = document.createElement('button');
-        CardOneD.textContent = "This one is wrong";
+        CardOneD.textContent = "Also wrong";
         CardOneD.className = "wrong btn";
 
     document.querySelector('#body-div').appendChild(qCardOne);
-    document.querySelector(".qOne").appendChild(CardOneA);
-    document.querySelector(".qOne").appendChild(CardOneB);
-    document.querySelector(".qOne").appendChild(CardOneC);
-    document.querySelector(".qOne").appendChild(CardOneD);
+    document.querySelector('.card').appendChild(CardOneText);
+    document.querySelector(".card").appendChild(CardOneA);
+    document.querySelector(".card").appendChild(CardOneB);
+    document.querySelector(".card").appendChild(CardOneC);
+    document.querySelector(".card").appendChild(CardOneD);
 
 
     document.querySelector(".wrong").addEventListener('click', wrongAnswer);
